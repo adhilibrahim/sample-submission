@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sample_submission_kanban" model="ir.ui.view">
+        <field name="name">sample.submission.kanban</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" create="0" group_create="0" sample="1">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Customer:
+                                        <field name="customer_id"/>
+                                    </li>
+                                    <li>
+                                        Reference:
+                                        <field name="reference"/>
+                                    </li>
+                                    <li>
+                                        Stage:
+                                        <field name="stages"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_sample_submission_tree" model="ir.ui.view">
+        <field name="name">sample.submission.tree</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <tree string="Sample Records">
+                <field name="customer_id"/>
+                <field name="reference"/>
+                <field name="invoiced"/>
+                <field name="submission_date"/>
+                <field name="price"/>
+                <field name="stages"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_sample_submission_form" model="ir.ui.view">
+        <field name="name">sample.submission.form</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <form string="Your Details">
+                <header>
+                    <button name="action_pending" id="button_pending" string="Pending" states=""
+                            type="object"/>
+                    <button name="action_doing" id="button_doing" string="Doing"
+                            states=""
+                            type="object"/>
+                    <button name="action_completed" id="button_completed" string="Completed" class="btn-primary"
+                            states="" confirm=""
+                            type="object"/>
+                    <field name="stages" widget="statusbar" statusbar_visible="pending,doing,completed"/>
+                    <button string="Generate Invoice" name="confirm_invoice" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="submission_date"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="vat"/>
+                            <field name="discount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Materials Required" name="appointment">
+                            <field name="material_line_ids" readonly="1">
+                                <tree editable="bottom">
+                                    <field name="sl_no"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="remarks"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="sl_no"/>
+                                            <field name="product_id"/>
+                                        </group>
+                                        <group>
+                                            <field name="quantity"/>
+                                            <field name="remarks"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="%(sample_submission.sample_wizard_action)d" id="create_sample_wizard"
+                                string="Material Requirements" class="btn-primary"
+                                type="action"/>
+                    </footer>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_patient_search" model="ir.ui.view">
+        <field name="name">sample.submission.search</field>
+        <field name="model">sample.submission</field>
+        <field name="arch" type="xml">
+            <search string="Sample Search">
+                <field name="customer_id"/>
+                <field name="note"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="sample_action" model="ir.actions.act_window">
+        <field name="name">Submit Your Sample</field>
+        <field name="res_model">sample.submission</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}
+        </field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register First Record
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem name="Sample Submission"
+              id="sample_submission_root"
+              sequence="5"/>
+
+    <menuitem name="Sample"
+              id="sample_root"
+              parent="sample_submission_root"
+              sequence="10"/>
+
+    <menuitem name="View Samples"
+              id="sample_view_root"
+              parent="sample_root"
+              action="sample_action"
+              sequence="1"/>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_generate_invoice_warning" model="ir.ui.view">
+        <field name="name">generate.invoice.warning.form</field>
+        <field name="model">invoice.warning</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="warning" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="Cancel" special="cancel"/>
+                    <button string="Create" type="object" class="oe_highlight" name="generate_invoice"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

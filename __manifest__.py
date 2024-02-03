@@ -17,7 +17,13 @@
     'depends': ['mail', 'report_xlsx'],
     'license': 'LGPL-3',
     'data': [
-
+        'security/ir.model.access.csv',
+        'data/data.xml',
+        'wizard/sample_wizard.xml',
+        'wizard/invoice_wizard_view.xml',
+        'views/sample_view.xml',
+        'report/report.xml',
+        'report/pdf_sample.xml',
     ],
     'demo': [
     ],

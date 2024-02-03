@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sample_sub_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="o_report_layout">
+                            <style>
+                                .watermark {
+                                position: fixed;
+                                opacity: 0.5;
+                                z-index: -1;
+                                }
+
+                                .watermark img {
+                                width: 200px;
+                                height: 150px;
+                                }
+                            </style>
+                            <div class="o_report_header">
+                                <div class="o_report_title">
+                                    <h2>Sample Submission Report</h2>
+                                </div>
+                            </div>
+                            <div class="o_report_body">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Customer</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td t-esc="doc.submission_date"/>
+                                            <td t-esc="doc.customer_id.name"/>
+                                            <td t-esc="doc.note"/>
+                                            <td t-esc="doc.price"/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="o_report_footer">
+                            </div>
+                            <div class="watermark">
+                                <img src="/sample_submission/static/image/image2.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sample_submission,access.sample.submission,model_sample_submission,,1,1,1,1
+access_materials_line,access.materials.line,model_materials_line,,1,1,1,1
+access_material_requirement_wizard,access.material.requirement.wizard,model_material_requirement_wizard,,1,1,1,1
+access_invoice_warning,access.invoice.warning,model_invoice_warning,,1,1,1,1

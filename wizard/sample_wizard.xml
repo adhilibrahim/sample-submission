@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="material_requirement_wizard_form_view" model="ir.ui.view">
+        <field name="name">material.requirement.wizard</field>
+        <field name="model">material.requirement.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Enter the Products">
+                <group class="oe_title">
+                    <group>
+                        <field name="sl_no"/>
+                        <field name="product_id"/>
+                    </group>
+                    <group>
+                        <field name="quantity"/>
+                        <field name="remarks"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="create_records" string="Create" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sample_wizard_action" model="ir.actions.act_window">
+        <field name="name">Materials</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">material.requirement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="material_requirement_wizard_form_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

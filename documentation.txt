@@ -1,0 +1,28 @@
+Sample-Submission App Development Documentation
+
+The goal of this project is to create a custom Odoo app called "sample-submission". This
+app aims to streamline the management of sample submissions, connect customers to
+submission forms, keep track of materials as products related to sample-submission,
+and generate invoices. Additionally, the app will support the generation of PDF and
+Excel reports with specific data and formatting requirements.
+
+Developed a custom Odoo app with an user friendly interface.
+Included essential fields such as Sample Sequence Number (auto-generated), Sample Name, Customer, Date of Submission, Description, Price, Discount, Vat, and Stage.
+Enabled users to easily modify stages (Pending, Doing, Completed) for better workflow management.
+
+One2many field section
+Implemented a notebook within each sample submission to manage material requirements.
+Included fields such as Sl No, Material (Product-Inventory), Quantity, and Remarks in the notebook.
+Restricted inline creation and modification of notebook records to maintain data integrity.
+Established a wizard for efficient entry and modification of material records.
+Provided a menu button in the action to create material-required notebook entries using a wizard.
+
+Invoice generation
+Set up a button in the form view of model called sample.submission
+Designed a warning message with cancel and Create buttons
+Clicking "create" generates a record in the invoicing module
+Included an a field named invoiced in sample records list view
+
+Reports Generation
+Implemented the generation of PDF and Excel reports for sample submission records.
+Designed PDF reports with details such as Date, Customer, Name, and Price, including a watermark with a specified logo.
